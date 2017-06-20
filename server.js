@@ -4,6 +4,7 @@ var path = require('path');
 var configAuth = require('./app/auth.js');
 app.use(express.static(__dirname + '/public'));
 var client =require('twilio')('AC3038174077429c331f0f7a1a51194f88','0e4748d9b1f448a4376339c152cdc33c');
+/*
 var mongoose = require('mongoose');
 var passport=require('passport');
 mongoose.connect('mongodb://localhost/test');
@@ -18,14 +19,14 @@ db.once('open', function() {
 var cors = require('cors');
 // Add headers
 app.use(function(req, res, next) {
-  
+
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log("yeahhhhhh");
   //console.log(req);
   next();
 });
-
+*/
 
 var FacebookStrategy=require('passport-facebook').Strategy;
 // viewed at http://localhost:8080
@@ -36,6 +37,7 @@ app.get('/', function(req, res) {
 	console.log("got the request");
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
+/*
 app.get('/a',function(req,res){
 	console.log("got the get req");
 
@@ -90,7 +92,7 @@ app.get('/auth/facebook/callback',
 																					});
 																				}
 																			));
-
+*/
 app.post('/sendSMS', function (req, res) {
   console.log('I received a GET request');
 	console.log(req.body);
