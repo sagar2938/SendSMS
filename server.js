@@ -103,7 +103,7 @@ app.post('/sendSMS', function (req, res) {
 				body:details.body
 			};
 console.log(sendDetail);
-			/*client.messages.create({
+			client.messages.create({
 				to:details.phoneNumber,
 				from:'+17147054468',
 				body:details.body
@@ -118,7 +118,7 @@ console.log(sendDetail);
           res.status(200).send({ error: "boo:(" });
 				}
 			}
-    )*/
+    )
 //res.json({"res":"success"});
 });
 
