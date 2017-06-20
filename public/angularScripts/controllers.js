@@ -23,12 +23,15 @@ controllers.controller("home",function($scope,$location,$http){
 });
 
 controllers.controller("sendSMS",function($scope,$http){
+  $scope.sent;
   console.log("$$$$$$$$$$$$$$");
   var sendSMSFunc=function(){
 	  console.log($scope.details);
 	  $http.post('/sendSMS', $scope.details).then(function(response) {
     console.log(response.data);
-
+    $scope.sent=true;
+  },function myError(res){
+    $scope.sent=false;
   });
 }
 
