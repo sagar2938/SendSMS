@@ -102,12 +102,9 @@ app.post('/sendSMS', function (req, res) {
 				from:'+17147054468',
 				body:details.body
 			};
+
 console.log(sendDetail);
-			client.messages.create({
-				to:details.phoneNumber,
-				from:'+17147054468',
-				body:details.body
-			},function(err,data){
+			client.messages.create(sendDetail,function(err,data){
 				if(err){
 					console.log("error occured while sending sms");
 					console.log(err);
