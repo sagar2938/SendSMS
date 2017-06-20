@@ -28,9 +28,11 @@ controllers.controller("sendSMS",function($scope,$http){
   var sendSMSFunc=function(){
 	  console.log($scope.details);
 	  $http.post('/sendSMS', $scope.details).then(function(response) {
-    console.log(response.data);
+//    console.log(response.data);
+console.log("success response from the server");
     $scope.sent=true;
   },function myError(res){
+    console.log("error response from the server");
     $scope.sent=false;
   });
 }
