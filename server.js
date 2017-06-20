@@ -16,9 +16,15 @@ db.once('open', function() {
 });
 
 var cors = require('cors');
-
-// use it before all route definitions
-app.use(cors({origin: 'http://localhost:8888'}));
+// Add headers
+app.use(function(req, res, next) {
+  
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  console.log("yeahhhhhh");
+  //console.log(req);
+  next();
+});
 
 
 var FacebookStrategy=require('passport-facebook').Strategy;
@@ -37,7 +43,13 @@ app.get('/a',function(req,res){
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback
-app.get('/auth/facebook', passport.authenticate('facebook',{scope:['email']}));
+//app.get('/auth/facebook', passport.authenticate('facebook',{scope:['email']}));
+app.get('/auth/facebook',function(req,res){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  console.log("this is called");
+  passport.authenticate('facebook',{scope:['email']})
+})
 
 // Facebook will redirect the user to this URL after approval.  Finish the
 // authentication process by attempting to obtain an access token.  If
